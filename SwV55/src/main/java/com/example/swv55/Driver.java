@@ -11,6 +11,12 @@ public class Driver extends UserData{
 
     String drivingLicennse;
     int nationalld;
+    int mob_number=0;
+    String Email;
+    String role;
+    String user_name ;
+    String passaword ;
+
 int offerPrice;
 
 

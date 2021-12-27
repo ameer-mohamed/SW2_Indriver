@@ -4,86 +4,67 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Passenger extends UserData {
+public class Passenger  {
 
 
-    public Driver driver = new Driver();
-    void request(String source,String destnation)
-    {
+    int mob_number=0;
+    String Email;
+    String role;
+    String user_name ;
+    String passaword ;
 
-        this.source = source;
-        this.destnation = destnation;
 
-       /* for(int i = 0 ; i <= driver.Driver.size(); i++)
-        {*/
-
-            driver.Match(source);
-
-       /* }*/
-
-    };
-
-    Boolean accept()
-    {
-        Boolean test = false;
-
-        Scanner sc = new Scanner(System.in);
-
-        int i = 0 ;
-        System.out.println("Your offers are : [");
-        for (int k = 0; k < driver.Offers.size(); k++) {
-            System.out.println(driver.Offers.get(k) + " , ");
-        }
-        System.out.println(" ]");
-        while(test == false)
-        {
-            System.out.println("Please choose an offer");
-            int x = sc.nextInt();
-           // driver.setOfferPrice(x);
-            for(int z = 0 ; z < driver.Offers.size() ; z++){
-                if(driver.Offers.get(z) == x)
-                {
-                    int y = z+1;
-                    System.out.println("The passenger selected the offer of the driver : " + driver.Driver.get(z).getUser_name() );
-                    this.setDriver(driver.Driver.get(z));
-                    //System.out.println("Dm"+this.getDriver().getUser_name());
-                    test = true;
-                }
-
-            }
-            if(test == false){
-                System.out.println("Please enter a valid number");
-            }
-        }
-     driver.Offers.clear();
-
-        rate(this.getDriver());
-
-        this.getDriver().AllRidesInFavAreas.add(this.getSource());
-        return test;
+    public void setUser_name(String user_name) {
+        this.user_name= user_name;
     }
 
 
-    void rate (Driver D)
-    {
-       // System.out.println("DU"+D.getUser_name());
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter Rate From 1 to 5");
-        int R= input.nextInt();
-        while(R >5 || R<1){
-            System.out.println("Enter from 1 to 5");
-             R= input.nextInt();
-        }
-        D.setRates(R);
+    public String getUser_name() {
+        return this.user_name;
+    }
 
 
-        System.out.println("Successfully rated");
-        System.out.println("");
+    public void setPassaword(String password) {
+        this.passaword = password;
+    }
 
 
-    };
+    public String getPassword() {
+        return this.passaword;
+    }
 
+
+
+    public void setMob_number(int mob_number) {
+        this.mob_number=mob_number;
+    }
+
+
+    public int getMob_number() {
+        return mob_number;
+    }
+
+
+    public void setEmail(String Email) {
+        this.Email=Email;
+    }
+
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setRole(String role) {
+        this.role=role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+
+/*
     public  void showRates(){
         for (int i =0 ; i< this.getDriver().HisRates.size() ; i++){
 
@@ -133,5 +114,5 @@ public class Passenger extends UserData {
 
         this.setSignedaccounts(this);
 
-    }
+    }*/
 }
