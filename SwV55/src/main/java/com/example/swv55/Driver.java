@@ -1,29 +1,31 @@
 package com.example.swv55;
-
-
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Driver implements UserLogin,UserSignUp{
-    String user_name ;
-    String passaword ;
-    int mob_number=0;
-    String Email;
-    String drivingLicennse;
-    int nationalld;
-    String role;
-    int offerPrice;
-    CRUDOperations CD;
-    int rate;
-    int averageRating;
-    public static ArrayList<String>FavouritAreas=new ArrayList<String>();
-    public static  ArrayList<Integer>Offers=new ArrayList<Integer>();
+public class Driver  {
+
+   private String user_name ;
+    private String passaword ;
+    private int mob_number=0;
+    private String Email;
+    private String drivingLicennse;
+    private  int nationalld;
+    private String role;
+   private int offerPrice;
+    private ArrayList<String>FavouritAreas=new ArrayList<String>();
+
+
+
+   // int rate;
+   // int averageRating;
+   // ArrayList<String>FavouritAreas=new ArrayList<String>();
+    //public static  ArrayList<Integer>Offers=new ArrayList<Integer>();
   // public static ArrayList<Driver> Driver = new ArrayList<Driver>();
-    public static ArrayList<String>AllRidesInFavAreas=new ArrayList<String>();
-    public static ArrayList<Integer>AverageRates=new ArrayList<Integer>();
-   public   ArrayList<Integer>HisRates=new ArrayList<Integer>();
-   
+   // public static ArrayList<String>AllRidesInFavAreas=new ArrayList<String>();
+    //public static ArrayList<Integer>AverageRates=new ArrayList<Integer>();
+  // public   ArrayList<Integer>HisRates=new ArrayList<Integer>();
+
+
 
 
     public void setUser_name(String user_name) {
@@ -103,6 +105,15 @@ public class Driver implements UserLogin,UserSignUp{
     {
         return nationalld;
     }
+    public void setFavouritAreas(ArrayList<String> favouritAreas) {
+        FavouritAreas = favouritAreas;
+    }
+
+    public ArrayList<String> getFavouritAreas() {
+        return FavouritAreas;
+    }
+
+
 
 
    /* public void setRates(int rates)
@@ -222,52 +233,7 @@ public class Driver implements UserLogin,UserSignUp{
     }*/
 
 
-    @Override
-    public Boolean Login(String Username, String pass) {
-        Boolean loginTest = false;
-        for(int i=0;i<CD.Drivers.size();i++){
 
-
-            if(Username.equals(CD.Drivers.get(i).getUser_name()) && pass.equals(CD.Drivers.get(i).getPassword()) ){
-                System.out.print(CD.Drivers.get(i).getUser_name());
-                System.out.println("      You Are loged in");
-                loginTest = true;
-                break;
-            }
-            else
-            {
-                // System.out.println("Username or Password is wrong");
-                loginTest = false;
-            }
-        }
-        if(loginTest==false ){System.out.println("Username or Password is wrong");}
-        return loginTest;
-    }
-
-    @Override
-    public void signUp() {
-        System.out.println("Sign-up here");
-        this.setRole("driver");
-        Scanner input = new Scanner(System.in);
-        System.out.println("EnterUserNAme");
-        String name = input.nextLine();
-        this.setUser_name(name);
-        System.out.println("Enter pass");
-        String password =  input.nextLine();
-        this.setPassaword(password);
-        System.out.println("Enter Email");
-        String email = input.nextLine();
-        this.setEmail(email);
-        System.out.println("Enter mob");
-        int mobile =input.nextInt();
-        this.setMob_number(mobile);
-        System.out.println("Enter Driving Licesnse");
-        String Dl= input.next();
-        this.setDrivingLicennse(Dl);
-        System.out.println("Enter National ID");
-        int ID = input.nextInt();
-        this.setnationalld(ID);
-    }
    /* public void setAd(Admin ad) {
         this.ad = ad;
     }*/

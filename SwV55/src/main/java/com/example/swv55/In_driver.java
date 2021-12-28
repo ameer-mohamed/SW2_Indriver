@@ -58,14 +58,14 @@ public class In_driver {
                             
                             if(role == 1)
                             {
-                               p1.signUp();
+                                Pc.signUp();
                                Ac.addpass(p1);
                                p1=new Passenger();
                                break;
                             }
                             else if(role == 2)
                             {
-                               d1.signUp();
+                               DC.signUp();
                                Ac.needverfiy(d1);
                                d1 = new Driver();
                            /*   for(int i =0;i<ad.AllAccounts.size();i++){
@@ -105,7 +105,7 @@ public class In_driver {
                                         String username = input.next();
                                         System.out.println("enter your Passaword");
                                         String pass = input.next();
-                                        Boolean z = d1.Login(username, pass);
+                                        Boolean z = DC.Login(username, pass);
                                         for (int i = 0; i < database.inverifedaccounts.size(); i++) {
                                             if (username.equals(database.inverifedaccounts.get(i).getUser_name())) {
                                                 inverifed = i;
@@ -142,8 +142,8 @@ public class In_driver {
                                                         Boolean satisfied = false;
                                                         while (satisfied == false) {
                                                             String area = input.next();
-                                                            d1.FavouritAreas.add(area);
-                                                            System.out.println("FA: " + d1.FavouritAreas.size());
+                                                            database.FavouritAreas.add(area);
+                                                            System.out.println("FA: " + DC.FavouritAreas.size());
                                                             System.out.println("Add another area");
                                                             System.out.println("1) yes");
                                                             System.out.println("2) No");
@@ -190,7 +190,7 @@ public class In_driver {
                                         String username = input.next();
                                         System.out.println("enter your Passaword");
                                         String pass = input.next();
-                                        Boolean z = p1.Login(username, pass);
+                                        Boolean z = Pc.Login(username, pass);
 
                                         if (z == true) {
                                             exist = -1;
@@ -216,7 +216,7 @@ public class In_driver {
                                                             String src = input.next();
                                                             System.out.println("please enter your Destnation");
                                                             String dest = input.next();
-                                                            p1.request(src, dest);
+                                                            Pc.request(src, dest);
                                                             // d1.Match(src);
                                                             // d1.notify(src);
                                                        /*System.out.println("Your offers are : [");
@@ -225,7 +225,7 @@ public class In_driver {
                                                        }
                                                        System.out.println(" ]");*/
 
-                                                            p1.accept();
+                                                            Pc.accept();
                                                             //  p1.rate(d1);
                                                         }
                                                         break;
@@ -251,7 +251,7 @@ public class In_driver {
                                System.out.println("enter your Passaword");
                               String  pass = input.next();
                              
-                               boolean z =   ad.Login(username, pass);
+                               boolean z =   Ac.Login(username, pass);
 
                                if(z==true){
                                    System.out.println("Hello:  " + username);

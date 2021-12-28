@@ -2,7 +2,7 @@ package com.example.swv55;
 
 import java.util.Scanner;
 
-public class admin_controller {
+public class admin_controller implements UserLogin{
     CRUDOperations database;
     Admin ad=new Admin();
     void  verfiy(){
@@ -90,8 +90,8 @@ public class admin_controller {
 
 
     }
-    public Boolean Login(String Username, String pass) {
-        Boolean loginTest = false;
+    @Override
+    public Boolean Login(String Username, String pass) {Boolean loginTest = false;
         for(int i=0;i<database.admins.size();i++){
             if(Username.equals(database.admins.get(i).getUser_name()) && pass.equals(database.admins.get(i).getPassword()) ){
                 //    System.out.println("You Are loged in");
@@ -108,6 +108,7 @@ public class admin_controller {
         }
         else{System.out.println("Username or Password is wrong");}
         return loginTest;
+
     }
     void needverfiy(Driver u){
         database.inverifedaccounts.add(u);
