@@ -5,32 +5,75 @@ package com.example.swv55;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Driver extends UserData{
-
-
-
-    String drivingLicennse;
-    int nationalld;
-    int mob_number=0;
-    String Email;
-    String role;
+public class Driver implements UserLogin,UserSignUp{
     String user_name ;
     String passaword ;
-
-int offerPrice;
-
-
-
+    int mob_number=0;
+    String Email;
+    String drivingLicennse;
+    int nationalld;
+    String role;
+    int offerPrice;
+    CRUDOperations CD;
+    int rate;
+    int averageRating;
     public static ArrayList<String>FavouritAreas=new ArrayList<String>();
     public static  ArrayList<Integer>Offers=new ArrayList<Integer>();
-   public static ArrayList<Driver> Driver = new ArrayList<Driver>();
+  // public static ArrayList<Driver> Driver = new ArrayList<Driver>();
     public static ArrayList<String>AllRidesInFavAreas=new ArrayList<String>();
     public static ArrayList<Integer>AverageRates=new ArrayList<Integer>();
    public   ArrayList<Integer>HisRates=new ArrayList<Integer>();
    
-    Passenger passenger;
-     int rate;
-    int averageRating;
+
+
+    public void setUser_name(String user_name) {
+        this.user_name= user_name;
+    }
+
+
+
+    public String getUser_name() {
+        return this.user_name;
+    }
+
+
+    public void setPassaword(String password) {
+        this.passaword = password;
+    }
+
+
+    public String getPassword() {
+        return this.passaword;
+    }
+
+
+
+    public void setMob_number(int mob_number) {
+        this.mob_number=mob_number;
+    }
+
+
+    public int getMob_number() {
+        return mob_number;
+    }
+
+
+    public void setEmail(String Email) {
+        this.Email=Email;
+    }
+
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setRole(String role) {
+        this.role=role;
+    }
+
+    public String getRole() {
+        return role;
+    }
 
 
 
@@ -62,7 +105,7 @@ int offerPrice;
     }
 
 
-    public void setRates(int rates)
+   /* public void setRates(int rates)
     {
         this.rate=rates;
         this.HisRates.add(rates);
@@ -86,11 +129,7 @@ int offerPrice;
     {
         return averageRating;
     }
-
-    Passenger getPassenger () {
-        return null;
-
-    }
+*/
 /*
     public  void showRates(){
         for(int i=0 ; i< Driver.size();i++ ){
@@ -111,39 +150,8 @@ int offerPrice;
         }-
     }*/
 
-    public Boolean Match(String source)
-    {
-        ArrayList<Integer> OO = new ArrayList<>();
-        Boolean test = false;
 
-        for(int i = 0 ; i < Driver.size() ; i++ )
-        {
-            for(int j = 0 ; j <Driver.get(i).FavouritAreas.size() ; j++)
-            {
-                //Driver d= new Driver();
-                if(source.equals(Driver.get(i).FavouritAreas.get(j)))
-                {
-                    System.out.println("We found a passenger");
-
-                   OO = notify(i);
-                    test = true;
-                    break;
-                
-                }
-                else
-                {
-                    System.out.println("This driver not in your source location");
-                    test = false;
-                    break;
-                }
-            }
-        }
-
-        return test;
-
-    }
-
-    public ArrayList<Driver> getDriver(){
+   /*public ArrayList<Driver> getDriver(){
        for(int i=0 ;i <getAd().AllAccounts.size();i++){
            if((getAd().AllAccounts.get(i).getRole()).equals("driver") && !(Driver.contains(getAd().AllAccounts.get(i)))){
 
@@ -153,34 +161,20 @@ int offerPrice;
 
         return Driver;
     }
+*/
 
 
 
-    public ArrayList<Integer> notify(int index)
-    {
 
-                    System.out.println(Driver.get(index).getUser_name() +"    Please enter an offer");
-                    Scanner input = new Scanner(System.in);
-                    int offer = input.nextInt();
-                   Driver.get(index).setOfferPrice(offer);
-
-         System.out.println("Avarage Rate : " + getaverageRating()+" For "+Driver.get(index).getUser_name()+ " with offer price:  "+ Driver.get(index).getOfferPrice());
-
-
-        return Offers;
-
-    }
-
-
- @Override
+ /*@Override
       public void setSignedaccounts(User x){
       
       this.signedaccounts.add(x) ;
  
-      }
+      }*/
 
 
-    @Override
+   /*
     public void getSignedaccounts() {
 
         for (User signedaccount : signedaccounts) {
@@ -192,9 +186,9 @@ int offerPrice;
 
         }
         // return null;
-    }
+    }*/
 
-    public void signup() {
+   /* public void signup() {
 
       
         this.setRole("driver");
@@ -218,19 +212,63 @@ int offerPrice;
         int ID = input.nextInt();
         this.setnationalld(ID);
        
-       System.out.println( ".........");
-       // getAd().AllAccounts.add(this);
-        this.setSignedaccounts(this);
+
+
         
         
         
         
         
+    }*/
+
+
+    @Override
+    public Boolean Login(String Username, String pass) {
+        Boolean loginTest = false;
+        for(int i=0;i<CD.Drivers.size();i++){
+
+
+            if(Username.equals(CD.Drivers.get(i).getUser_name()) && pass.equals(CD.Drivers.get(i).getPassword()) ){
+                System.out.print(CD.Drivers.get(i).getUser_name());
+                System.out.println("      You Are loged in");
+                loginTest = true;
+                break;
+            }
+            else
+            {
+                // System.out.println("Username or Password is wrong");
+                loginTest = false;
+            }
+        }
+        if(loginTest==false ){System.out.println("Username or Password is wrong");}
+        return loginTest;
     }
 
-    
-
-
-
-
+    @Override
+    public void signUp() {
+        System.out.println("Sign-up here");
+        this.setRole("driver");
+        Scanner input = new Scanner(System.in);
+        System.out.println("EnterUserNAme");
+        String name = input.nextLine();
+        this.setUser_name(name);
+        System.out.println("Enter pass");
+        String password =  input.nextLine();
+        this.setPassaword(password);
+        System.out.println("Enter Email");
+        String email = input.nextLine();
+        this.setEmail(email);
+        System.out.println("Enter mob");
+        int mobile =input.nextInt();
+        this.setMob_number(mobile);
+        System.out.println("Enter Driving Licesnse");
+        String Dl= input.next();
+        this.setDrivingLicennse(Dl);
+        System.out.println("Enter National ID");
+        int ID = input.nextInt();
+        this.setnationalld(ID);
+    }
+   /* public void setAd(Admin ad) {
+        this.ad = ad;
+    }*/
 }

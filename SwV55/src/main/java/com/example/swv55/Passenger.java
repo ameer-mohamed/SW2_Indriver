@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Passenger  {
+public class Passenger implements UserSignUp,UserLogin {
 
 
     int mob_number=0;
@@ -12,6 +12,7 @@ public class Passenger  {
     String role;
     String user_name ;
     String passaword ;
+    CRUDOperations CD;
 
 
     public void setUser_name(String user_name) {
@@ -63,6 +64,52 @@ public class Passenger  {
         return role;
     }
 
+    @Override
+    public Boolean Login(String Username, String pass) {
+        Boolean loginTest = false;
+        for(int i=0;i<CD.Passengers.size();i++){
+
+
+            if(Username.equals(CD.Passengers.get(i).getUser_name()) && pass.equals(CD.Passengers.get(i).getPassword()) ){
+                System.out.print(CD.Passengers.get(i).getUser_name());
+                System.out.println("      You Are loged in");
+                loginTest = true;
+                break;
+            }
+            else
+            {
+                // System.out.println("Username or Password is wrong");
+                loginTest = false;
+            }
+        }
+        if(loginTest==false ){System.out.println("Username or Password is wrong");}
+        return loginTest;
+    }
+
+    @Override
+    public void signUp() {
+        System.out.println("Sign-up here");
+        this.setRole("passenger");
+        Scanner input = new Scanner(System.in);
+        System.out.println("EnterUserNAme");
+        String name = input.nextLine();
+        this.setUser_name(name);
+        System.out.println("Enter pass");
+        String password =  input.nextLine();
+        this.setPassaword(password);
+        System.out.println("Enter Email");
+        String email = input.nextLine();
+        this.setEmail(email);
+        System.out.println("Enter mob");
+        int mobile =input.nextInt();
+        this.setMob_number(mobile);
+
+
+    }
+   /* public void setAd(Admin ad) {
+        this.ad = ad;
+    }*/
+
 
 /*
     public  void showRates(){
@@ -76,11 +123,9 @@ public class Passenger  {
     Driver getDriver(){
         return this.driver;
     };
+*/
 
-    public void setAd(Admin ad) {
-        this.ad = ad;
-    }
-
+/*
     public Admin getAd() {
         return ad;
     }

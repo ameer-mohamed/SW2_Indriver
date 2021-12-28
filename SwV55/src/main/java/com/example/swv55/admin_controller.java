@@ -3,65 +3,97 @@ package com.example.swv55;
 import java.util.Scanner;
 
 public class admin_controller {
-    Admin admin;
     CRUDOperations database;
+    Admin ad=new Admin();
     void  verfiy(){
-        for(int i=0 ; i<inverifedaccounts.size() ; i++){
+        for(int i=0 ; i<database.inverifedaccounts.size() ; i++){
 
-            System.out.println("Enter " +(i+1) + "  to verfiy driver:  " +inverifedaccounts.get(i).getUser_name());
+            System.out.println("Enter " +(i+1) + "  to verfiy driver:  " +database.inverifedaccounts.get(i).getUser_name());
 
         }
         // System.out.println("Enter " +(inverifedaccounts.size()+1)+ "  to back to main menu    ");
 
-        for(int i=0;i<inverifedaccounts.size();i++){
+        for(int i=0;i<database.inverifedaccounts.size();i++){
             Scanner input = new Scanner(System.in);
             System.out.println("Enter Choice");
             int choose = input.nextInt();
 
-            AllAccounts.add(inverifedaccounts.get(choose-1));
-            inverifedaccounts.remove(choose-1);
+           database.Drivers.add(database.inverifedaccounts.get(choose-1));
+            database.inverifedaccounts.remove(choose-1);
 
 
 
         }}
         void suspend(){
-            if(AllAccounts.size()==0){
+            Scanner input = new Scanner(System.in);
+            System.out.println("what account u want to suspend");
+            System.out.println("1-Passenger");
+            System.out.println("2-Driver");
+            int choice = input.nextInt();
+            switch(choice)
+            {
+                case 1:
+                {
+                    if(database.Passengers.size()==0){
+                        System.out.println("No Accounts to suspend");
+                    }
+                    else {
+                        for (int i = 0; i < database.Passengers.size(); i++) {
+
+                            System.out.println("Enter " + (i + 1) + "  to suspend :  " + database.Passengers.get(i).getUser_name());
+
+                        }
+
+                        for (int i = 0; i < database.Passengers.size(); i++) {
+                            System.out.println("Enter Choice");
+                            int choose = input.nextInt();
+
+                            database.SuspendedAccounts_p.add(database.Passengers.get(choose-1));
+                            database.Passengers.remove(database.Passengers.get(choose-1));
+
+                        }
+                    }
+
+                }
+                case 2 :
+                {
+            if( database.Drivers.size()==0){
                 System.out.println("No Accounts to suspend");
             }
             else {
-                for (int i = 0; i < AllAccounts.size(); i++) {
-
-                    System.out.println("Enter " + (i + 1) + "  to suspend :  " + AllAccounts.get(i).getUser_name());
-
+                for (int i = 0; i < database.Drivers.size(); i++) {
+                    System.out.println("Enter " + (i + 1) + "  to suspend :  " + database.Drivers.get(i).getUser_name());
                 }
 
-                for (int i = 0; i < AllAccounts.size(); i++) {
-                    Scanner input = new Scanner(System.in);
+                for (int i = 0; i < database.Drivers.size(); i++) {
                     System.out.println("Enter Choice");
                     int choose = input.nextInt();
 
-                    SuspendedAccounts.add(AllAccounts.get(choose-1));
-                    AllAccounts.remove(AllAccounts.get(choose-1));
-
-
-
+                    database.SuspendedAccounts_D.add(database.Drivers.get(choose-1));
+                    database.Drivers.remove(database.Drivers.get(choose-1));
                 }
-
             }
 
         }
+                default:
+                {
+                    System.out.println("Please enter a valid input");
+                    break;
+                }
+            }
+    }
     public void addAdmin(String Username, String pass){
         Admin ad = new Admin();
         ad.setUser_name(Username);
         ad.setPassaword(pass);
-        this.admins.add(ad);
+        database.admins.add(ad);
 
 
     }
     public Boolean Login(String Username, String pass) {
         Boolean loginTest = false;
-        for(int i=0;i<this.admins.size();i++){
-            if(Username.equals(this.admins.get(i).getUser_name()) && pass.equals(this.admins.get(i).getPassword()) ){
+        for(int i=0;i<database.admins.size();i++){
+            if(Username.equals(database.admins.get(i).getUser_name()) && pass.equals(database.admins.get(i).getPassword()) ){
                 //    System.out.println("You Are loged in");
                 loginTest = true;
                 break;
@@ -77,12 +109,12 @@ public class admin_controller {
         else{System.out.println("Username or Password is wrong");}
         return loginTest;
     }
-    void needverfiy(User u){
-        inverifedaccounts.add(u);
+    void needverfiy(Driver u){
+        database.inverifedaccounts.add(u);
 
     }
-    void addpass(User a){
-        this.AllAccounts.add(a);
+    void addpass(Passenger a){
+        database.Passengers.add(a);
 
     }
 

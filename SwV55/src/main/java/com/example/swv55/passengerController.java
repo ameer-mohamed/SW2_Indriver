@@ -85,5 +85,6 @@ public class passengerController {
         System.out.println("");
 
 
-    };
+    }
+
 }
