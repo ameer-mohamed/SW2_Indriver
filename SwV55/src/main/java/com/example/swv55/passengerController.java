@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class passengerController implements subject,observer, UserSignUp,UserLogin{
     CRUDOperations CD=new CRUDOperations();
-    Passenger passenger =new Passenger();
-    driverController DC = new driverController();
+    Passenger passenger ;
+    driverController DC ;
     Ride rd=new Ride();
+
     void setPassenger(Passenger passenger){
         this.passenger = passenger;
     }
@@ -27,7 +28,7 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
 
         }
     };
-   /* Boolean accept()
+   Boolean accept()
     {
         Boolean test = false;
 
@@ -35,8 +36,8 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
 
         int i = 0 ;
         System.out.println("Your offers are : [");
-        for (int k = 0; k < driver.Offers.size(); k++) {
-            System.out.println(driver.Offers.get(k) + " , ");
+        for (int k = 0; k < CD.Offers.size(); k++) {
+            System.out.println(CD.Offers.get(k) + " , ");
         }
         System.out.println(" ]");
         while(test == false)
@@ -44,12 +45,13 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
             System.out.println("Please choose an offer");
             int x = sc.nextInt();
             // driver.setOfferPrice(x);
-            for(int z = 0 ; z < driver.Offers.size() ; z++){
-                if(driver.Offers.get(z) == x)
+            for(int z = 0 ; z < CD.Offers.size() ; z++){
+                if(CD.Offers.get(z) == x)
                 {
                     int y = z+1;
-                    System.out.println("The passenger selected the offer of the driver : " + driver.Driver.get(z).getUser_name() );
-                    this.setDriver(driver.Driver.get(z));
+                    System.out.println("The passenger selected the offer of the driver : " + CD.Drivers.get(z).getUser_name() );
+                     rated(CD.Drivers.get(z));
+                    CD.Drivers.get(z).AllRidesInFavAreas.add(rd.getSource());
                     //System.out.println("Dm"+this.getDriver().getUser_name());
                     test = true;
                 }
@@ -59,16 +61,16 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
                 System.out.println("Please enter a valid number");
             }
         }
-        driver.Offers.clear();
+        CD.Offers.clear();
 
-        rate(this.getDriver());
+        //rated(this.getDriver());
 
-        this.getDriver().AllRidesInFavAreas.add(this.getSource());
+       // this.getDriver().AllRidesInFavAreas.add(this.getSource());
         return test;
     }
 
 
-    void rate (Driver D)
+    void rated (Driver D)
     {
         // System.out.println("DU"+D.getUser_name());
 
@@ -86,11 +88,11 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
         System.out.println("");
 
 
-    }*/
+    }
 
     @Override
-    public void update(String message) {
-        System.out.println("your offers are :  ");
+    public void update(int message) {
+        System.out.println("your offers are :  "+ message);
 
     }
 
@@ -109,7 +111,7 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
         for(int i = 0 ; i <= CD.Drivers.size(); i++)
         {
 
-            DC.Match(this.source);
+            DC.Match(rd.source);
 
         }
     }
@@ -163,5 +165,21 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
 
     public void setRd(Ride rd) {
         this.rd = rd;
+    }
+
+    public CRUDOperations getCD() {
+        return CD;
+    }
+
+    public void setCD(CRUDOperations CD) {
+        this.CD = CD;
+    }
+
+    public driverController getDC() {
+        return DC;
+    }
+
+    public void setDC(driverController DC) {
+        this.DC = DC;
     }
 }

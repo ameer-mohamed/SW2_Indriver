@@ -142,8 +142,8 @@ public class In_driver {
                                                         Boolean satisfied = false;
                                                         while (satisfied == false) {
                                                             String area = input.next();
-                                                            database.FavouritAreas.add(area);
-                                                            System.out.println("FA: " + DC.FavouritAreas.size());
+                                                            d1.FavouritAreas.add(area);
+                                                            System.out.println("FA: " + d1.FavouritAreas.size());
                                                             System.out.println("Add another area");
                                                             System.out.println("1) yes");
                                                             System.out.println("2) No");
@@ -160,7 +160,7 @@ public class In_driver {
                                                         break;
                                                     }
                                                     case 2: {
-                                                        p1.showRates();
+                                                        DC.showRates();
                                                         break;
                                                     }
                                                     case 3: {
@@ -510,7 +510,7 @@ public class In_driver {
 
 
                                      */
-                                    System.out.println("Your offers are : " +  d1.notify(src) );
+                          /*          System.out.println("Your offers are : " +  d1.notify(src) );
 
                                     p1.accept();
                                     p1.rate (d1);
@@ -564,4 +564,4 @@ public class In_driver {
             }
 
 
-        }
+        }*/

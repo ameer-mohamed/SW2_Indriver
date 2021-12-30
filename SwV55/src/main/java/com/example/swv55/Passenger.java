@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class Passenger   {
 
     private String user_name ;
-   private String passaword ;
-   private int mob_number=0;
+    private String passaword ;
+    private int mob_number=0;
     private String Email;
     private  String role;
 

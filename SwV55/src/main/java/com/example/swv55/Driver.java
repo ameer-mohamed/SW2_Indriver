@@ -11,19 +11,29 @@ public class Driver  {
     private String drivingLicennse;
     private  int nationalld;
     private String role;
-   private int offerPrice;
-    private ArrayList<String>FavouritAreas=new ArrayList<String>();
+    private int offerPrice;
+    public ArrayList<String>FavouritAreas=new ArrayList<String>();
+    public ArrayList<String>AllRidesInFavAreas=new ArrayList<String>();
+    private ArrayList<Integer>HisRates=new ArrayList<Integer>();
+    private int averageRating;
+    private int rate;
+
+
+    public int getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(int averageRating) {
+        this.averageRating = averageRating;
+    }
 
 
 
-   // int rate;
-   // int averageRating;
-   // ArrayList<String>FavouritAreas=new ArrayList<String>();
-    //public static  ArrayList<Integer>Offers=new ArrayList<Integer>();
-  // public static ArrayList<Driver> Driver = new ArrayList<Driver>();
-   // public static ArrayList<String>AllRidesInFavAreas=new ArrayList<String>();
-    //public static ArrayList<Integer>AverageRates=new ArrayList<Integer>();
-  // public   ArrayList<Integer>HisRates=new ArrayList<Integer>();
+
+
+
+
+
 
 
 
@@ -81,7 +91,7 @@ public class Driver  {
 
     void setOfferPrice(int P){
         this.offerPrice = P;
-        this.Offers.add(P);
+       //this.Offers.add(P);
     }
 
     int getOfferPrice(){
@@ -113,10 +123,29 @@ public class Driver  {
         return FavouritAreas;
     }
 
+    public ArrayList<String> getAllRidesInFavAreas() {
+        return AllRidesInFavAreas;
+    }
+
+    public void setAllRidesInFavAreas(ArrayList<String> allRidesInFavAreas) {
+        AllRidesInFavAreas = allRidesInFavAreas;
+    }
 
 
 
-   /* public void setRates(int rates)
+    public ArrayList<Integer> getHisRates() {
+        return HisRates;
+    }
+
+    public void setHisRates(ArrayList<Integer> hisRates) {
+        HisRates = hisRates;
+    }
+
+
+
+
+
+   public void setRates(int rates)
     {
         this.rate=rates;
         this.HisRates.add(rates);
@@ -134,15 +163,15 @@ public class Driver  {
             sum += HisRates.get(i);
        }
        this.averageRating = sum/this.HisRates.size();
-       this.AverageRates.add(this.averageRating);
+      // this.AverageRates.add(this.averageRating);
     }
     public int getaverageRating()
     {
         return averageRating;
     }
-*/
-/*
-    public  void showRates(){
+
+
+  /* public  void showRates(){
         for(int i=0 ; i< Driver.size();i++ ){
             if(Driver.get(i).getRate() == 0){
                 System.out.println("No Rating here :(");
@@ -155,10 +184,10 @@ public class Driver  {
                 }
             }
         }
-      /*  for (int i =0 ; i< this.getDriver().HisRates.size() ; i++){
+       for (int i =0 ; i< this.getDriver().HisRates.size() ; i++){
              System.out.println("DU"+this.getDriver().getUser_name());
             System.out.println(this.getDriver().HisRates.get(i));
-        }-
+        }
     }*/
 
 

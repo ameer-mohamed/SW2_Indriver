@@ -3,7 +3,7 @@ package com.example.swv55;
 import java.util.Scanner;
 
 public class admin_controller implements UserLogin{
-    CRUDOperations database;
+    CRUDOperations database=new CRUDOperations();
     Admin ad=new Admin();
     void  verfiy(){
         for(int i=0 ; i<database.inverifedaccounts.size() ; i++){
