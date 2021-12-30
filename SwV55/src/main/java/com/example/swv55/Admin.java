@@ -8,8 +8,8 @@ public class Admin   {
 
     String user_name = "";
     String passaword = "";
-    CRUDOperations CD;
-
+    CRUDOperations CD = new CRUDOperations();
+    Ride ride =new Ride();
   //  Driver driver;
 
   // public static ArrayList<Admin> admins = new ArrayList<Admin>();
@@ -37,7 +37,12 @@ public class Admin   {
         return this.passaword;
     }
 
-
+    public void setRide(Ride r){
+        ride = r;
+    }
+    public Ride getRide(){
+        return ride;
+    }
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.swv55;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Driver  {
@@ -17,7 +18,16 @@ public class Driver  {
     private ArrayList<Integer>HisRates=new ArrayList<Integer>();
     private int averageRating;
     private int rate;
+    private Date birthDate;
+    private Ride ride;
 
+    public void setRide(Ride ride) {
+        this.ride = ride;
+    }
+
+    public Ride getRide() {
+        return ride;
+    }
 
     public int getAverageRating() {
         return averageRating;
@@ -26,17 +36,6 @@ public class Driver  {
     public void setAverageRating(int averageRating) {
         this.averageRating = averageRating;
     }
-
-
-
-
-
-
-
-
-
-
-
 
     public void setUser_name(String user_name) {
         this.user_name= user_name;

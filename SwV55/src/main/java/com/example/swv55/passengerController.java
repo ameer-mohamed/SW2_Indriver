@@ -17,17 +17,18 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
 
     void request(String source,String destnation)
    {
-
-        rd.source =source;
-        rd.destnation = destnation;
+        //rd.source =source;
+        //rd.destnation = destnation;
 
         for(int i = 0 ; i <= CD.Drivers.size(); i++)
         {
 
-        DC.Match(source);
+             DC.Match(source , destnation);
 
         }
     };
+
+
    Boolean accept()
     {
         Boolean test = false;
@@ -111,7 +112,7 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
         for(int i = 0 ; i <= CD.Drivers.size(); i++)
         {
 
-            DC.Match(rd.source);
+            DC.Match(rd.source , rd.destnation);
 
         }
     }
@@ -156,6 +157,7 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
         int mobile =input.nextInt();
         passenger.setMob_number(mobile);
 
+        CD.Passengers.add(passenger);
 
     }
 

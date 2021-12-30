@@ -15,7 +15,7 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
         return driver;
     }
     Ride rd =new Ride();
-
+    ArrayList<Ride> Requestedrides = new ArrayList<Ride>();
 
 
     public void setObserverlist(ArrayList<observer> observerlist) {
@@ -25,9 +25,17 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
         return observerlist;
     }
 
-    public Boolean Match(String source)
+    public void setPassengerController(passengerController pc){
+        this.PC=pc;
+    }
+
+    public passengerController getPC() {
+        return PC;
+    }
+
+    public Boolean Match(String source , String des )
     {
-        ArrayList<Integer> OO = new ArrayList<>();
+        //ArrayList<Integer> OO = new ArrayList<>();
         Boolean test = false;
 
         for(int i = 0 ; i < CD.Drivers.size(); i++ )
@@ -37,9 +45,18 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
                 //Driver d= new Driver();
                 if(source.equals(CD.Drivers.get(i).getFavouritAreas().get(j)))
                 {
+
                     System.out.println("We found a passenger");
 
-                    OO = notify(i);
+                  //  OO = notify(i);
+                    this.rd.setSource(source);
+                    this.rd.setDestnation(des);
+                   // rd.setDriverController(CD.Drivers.get(i));
+                    //this.rd.setNumOfPassengers(1);
+                    //rd.getEvent().setEventName("from "+ source+"To "+des);
+                    //rd.getEvent().setPassengerName(this.getPC().getPassenger().getUser_name());
+                    Requestedrides.add(rd);
+
                     test = true;
                     break;
 
@@ -56,6 +73,12 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
         return test;
 
     }
+
+    public void acceptRequestRide(Ride r){
+
+    }
+
+
    public ArrayList<Integer> notify(int index)
     {
 
@@ -139,6 +162,8 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
         System.out.println("Enter National ID");
         int ID = input.nextInt();
         driver.setnationalld(ID);
+
+
     }
 
     public void setCD(CRUDOperations CD) {

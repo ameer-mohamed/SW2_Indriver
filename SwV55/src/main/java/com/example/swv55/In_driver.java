@@ -25,6 +25,7 @@ public class In_driver {
         Driver d1 = new Driver();
        // UserData u1 = new UserData();
         Passenger p1 = new Passenger();
+        Ride ride = new Ride();
        // p1.setAd(ad);
       //  d1.setAd(ad);
        // u1.setAd(ad);
@@ -58,21 +59,31 @@ public class In_driver {
                             
                             if(role == 1)
                             {
+                                Pc.setPassenger(p1);
+                                Pc.setCD(database);
                                 Pc.signUp();
-                               Ac.addpass(p1);
+                              // Ac.addpass(p1);
                                p1=new Passenger();
+
+                                for(int i =0;i<database.Passengers.size();i++){
+
+                                    System.out.println(database.Passengers.get(i).getUser_name()+ database.Passengers.get(i).getRole());
+
+                                }
                                break;
                             }
                             else if(role == 2)
                             {
+                                DC.setDriver(d1);
+                                DC.setCD(database);
                                DC.signUp();
                                Ac.needverfiy(d1);
                                d1 = new Driver();
-                           /*   for(int i =0;i<ad.AllAccounts.size();i++){
+                              for(int i =0;i<database.inverifedaccounts.size();i++){
                               
-                              System.out.println(ad.AllAccounts.get(i).getUser_name()+ ad.AllAccounts.get(i).getRole());
+                              System.out.println(database.inverifedaccounts.get(i).getUser_name()+ database.inverifedaccounts.get(i).getRole());
                               
-                              }*/
+                              }
 
                                break;
                            }
@@ -133,8 +144,9 @@ public class In_driver {
 
                                                 System.out.println("1) Add favorite area");
                                                 System.out.println("2) My rates");
-                                                System.out.println("3) List of all rides");
-                                                System.out.println("4) Logout");
+                                                System.out.println("3) Requested Rides");
+                                                System.out.println("4) List of all rides");
+                                                System.out.println("5) Logout");
                                                 int function = input.nextInt();
                                                 switch (function) {
                                                     case 1: {
@@ -163,14 +175,31 @@ public class In_driver {
                                                         DC.showRates();
                                                         break;
                                                     }
-                                                    case 3: {
+                                                    case 3:{
+
+                                                        for (int i=0; i< DC.Requestedrides.size(); i++)
+                                                        {
+                                                            System.out.println("Enter "+i +" To accept Request Ride From "+ DC.Requestedrides.get(i).getSource() +"To "+DC.Requestedrides.get(i).getDestnation()+
+                                                            " With "+ DC.Requestedrides.get(i).getNumOfPassengers());
+                                                        }
+                                                        for (int i = 0; i < DC.Requestedrides.size(); i++) {
+                                                            System.out.println("Enter Choice");
+                                                            int choose = input.nextInt();
+                                                            DC.acceptRequestRide(DC.Requestedrides.get(i));
+
+                                                        }
+
+
+                                                        break;
+                                                    }
+                                                    case 4: {
                                                         System.out.print("Your Rides : ");
                                                         for (int y = 0; y < d1.AllRidesInFavAreas.size(); y++) {
                                                             System.out.println(d1.AllRidesInFavAreas.get(y));
                                                         }
                                                         break;
                                                     }
-                                                    case 4: {
+                                                    case 5: {
                                                         fd = false;
                                                         break;
 
@@ -216,7 +245,15 @@ public class In_driver {
                                                             String src = input.next();
                                                             System.out.println("please enter your Destnation");
                                                             String dest = input.next();
+                                                            System.out.println("please enter number of passengers");
+                                                            int num = input.nextInt();
+
+                                                            DC.setPassengerController(Pc);
+                                                            Pc.setDC(DC);
+                                                            System.out.println(DC.getPC().getPassenger().getUser_name());
+                                                            System.out.println(Pc.getDC().getPC());
                                                             Pc.request(src, dest);
+
                                                             // d1.Match(src);
                                                             // d1.notify(src);
                                                        /*System.out.println("Your offers are : [");
@@ -225,7 +262,7 @@ public class In_driver {
                                                        }
                                                        System.out.println(" ]");*/
 
-                                                            Pc.accept();
+                                                           // Pc.accept();
                                                             //  p1.rate(d1);
                                                         }
                                                         break;
@@ -264,12 +301,19 @@ public class In_driver {
                                        switch(function){
                                            case 1:
                                            {
+                                               Ac.setDatabase(database);
                                                Ac.verfiy();
+                                               for(int i =0;i<database.Drivers.size();i++){
+
+                                                   System.out.println(database.Drivers.get(i).getUser_name()+ database.Drivers.get(i).getRole());
+
+                                               }
                                              //  d1.getDriver();
                                                break;
                                            }
                                            case 2 :
                                            {
+                                               Ac.setDatabase(database);
                                                Ac.suspend();
                                                break;
 

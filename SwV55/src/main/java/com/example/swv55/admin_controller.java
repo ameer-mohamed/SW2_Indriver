@@ -91,7 +91,7 @@ public class admin_controller implements UserLogin{
 
     }
     @Override
-    public Boolean Login(String Username, String pass) {Boolean loginTest = false;
+    public Boolean Login(String Username, String pass) { Boolean loginTest = false;
         for(int i=0;i<database.admins.size();i++){
             if(Username.equals(database.admins.get(i).getUser_name()) && pass.equals(database.admins.get(i).getPassword()) ){
                 //    System.out.println("You Are loged in");
@@ -119,6 +119,12 @@ public class admin_controller implements UserLogin{
 
     }
 
+    public void setDatabase(CRUDOperations database){
+        this.database = database;
+    }
+    public CRUDOperations getDatabase(){
+        return database;
+    }
 
 
 }
