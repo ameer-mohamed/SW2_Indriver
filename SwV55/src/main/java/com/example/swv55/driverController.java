@@ -14,8 +14,8 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
     Driver getDriver(){
         return driver;
     }
-    Ride rd =new Ride();
-    ArrayList<Ride> Requestedrides = new ArrayList<Ride>();
+    //Ride rd =new Ride();
+
 
 
     public void setObserverlist(ArrayList<observer> observerlist) {
@@ -33,7 +33,7 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
         return PC;
     }
 
-    public Boolean Match(String source , String des )
+    public Boolean Match(Ride r )
     {
         //ArrayList<Integer> OO = new ArrayList<>();
         Boolean test = false;
@@ -43,20 +43,27 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
             for(int j = 0 ; j <CD.Drivers.get(i).getFavouritAreas().size() ; j++)
             {
                 //Driver d= new Driver();
-                if(source.equals(CD.Drivers.get(i).getFavouritAreas().get(j)))
+
+                if(r.getSource().equals(CD.Drivers.get(i).getFavouritAreas().get(j)))
                 {
+
 
                     System.out.println("We found a passenger");
 
+
                   //  OO = notify(i);
-                    this.rd.setSource(source);
-                    this.rd.setDestnation(des);
+                    //this.rd.setSource(source);
+                    //this.rd.setDestnation(des);
                    // rd.setDriverController(CD.Drivers.get(i));
                     //this.rd.setNumOfPassengers(1);
                     //rd.getEvent().setEventName("from "+ source+"To "+des);
                     //rd.getEvent().setPassengerName(this.getPC().getPassenger().getUser_name());
-                    Requestedrides.add(rd);
 
+                    r.getdrivcont().setDriver(CD.Drivers.get(i));
+                   // System.out.println( r.getdrivcont().getDriver().getUser_name());
+                    CD.Drivers.get(i).Requestedrides.add(r);
+                    System.out.println(CD.Drivers.get(i).getUser_name());
+                    System.out.println(CD.Drivers.get(i).Requestedrides.size());
                     test = true;
                     break;
 
@@ -75,6 +82,14 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
     }
 
     public void acceptRequestRide(Ride r){
+        System.out.println("Please enter an offer");
+        Scanner input = new Scanner(System.in);
+        int offer = input.nextInt();
+       // String s =  offer + " From driver " + r.getdrivcont().getDriver().getUser_name();
+        r.getpassCont().Offers.add(offer);
+        System.out.println("Thanks :)");
+       // r.setDriverController();
+        r.getpassCont().accept(r);
 
     }
 

@@ -29,6 +29,7 @@ public class In_driver {
        // p1.setAd(ad);
       //  d1.setAd(ad);
        // u1.setAd(ad);
+
         Ac.addAdmin("ameer","311");
        Ac.addAdmin("menna", "101");
         Ac.addAdmin("medhat", "1811");
@@ -177,15 +178,17 @@ public class In_driver {
                                                     }
                                                     case 3:{
 
-                                                        for (int i=0; i< DC.Requestedrides.size(); i++)
+                                                        for (int i=0; i< DC.getDriver().Requestedrides.size(); i++)
                                                         {
-                                                            System.out.println("Enter "+i +" To accept Request Ride From "+ DC.Requestedrides.get(i).getSource() +"To "+DC.Requestedrides.get(i).getDestnation()+
-                                                            " With "+ DC.Requestedrides.get(i).getNumOfPassengers());
+                                                            System.out.println("Enter "+(i+1) +" To accept Request Ride From "+DC.getDriver().Requestedrides.get(i).getSource() +" To "+DC.getDriver().Requestedrides.get(i).getDestnation()+
+                                                                    " With "+ DC.getDriver().Requestedrides.get(i).getNumOfPassengers() + " Passengers !");
                                                         }
-                                                        for (int i = 0; i < DC.Requestedrides.size(); i++) {
+
+                                                        for (int i = 0; i <  DC.getDriver().Requestedrides.size(); i++) {
                                                             System.out.println("Enter Choice");
                                                             int choose = input.nextInt();
-                                                            DC.acceptRequestRide(DC.Requestedrides.get(i));
+
+                                                            DC.acceptRequestRide( DC.getDriver().Requestedrides.get(i));
 
                                                         }
 
@@ -248,11 +251,16 @@ public class In_driver {
                                                             System.out.println("please enter number of passengers");
                                                             int num = input.nextInt();
 
-                                                            DC.setPassengerController(Pc);
-                                                            Pc.setDC(DC);
-                                                            System.out.println(DC.getPC().getPassenger().getUser_name());
-                                                            System.out.println(Pc.getDC().getPC());
-                                                            Pc.request(src, dest);
+                                                            //DC.setPassengerController(Pc);
+                                                           // Pc.setDC(DC);
+                                                            Ride R= new Ride();
+                                                            Pc.setPassenger(p1);
+                                                            DC.setDriver(d1);
+                                                            R.setPassengerController(Pc);
+                                                            R.setSource(src);
+                                                            R.setDestnation(dest);
+                                                            R.setNumOfPassengers(num);
+                                                            Pc.request(R);
 
                                                             // d1.Match(src);
                                                             // d1.notify(src);
@@ -287,8 +295,8 @@ public class In_driver {
                                String username = input.next();
                                System.out.println("enter your Passaword");
                               String  pass = input.next();
-                             
-                               boolean z =   Ac.Login(username, pass);
+
+                                Boolean z =   Ac.Login(username, pass);
 
                                if(z==true){
                                    System.out.println("Hello:  " + username);

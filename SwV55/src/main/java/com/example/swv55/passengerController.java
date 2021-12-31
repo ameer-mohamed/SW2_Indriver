@@ -1,12 +1,15 @@
 package com.example.swv55;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class passengerController implements subject,observer, UserSignUp,UserLogin{
     CRUDOperations CD=new CRUDOperations();
     Passenger passenger ;
     driverController DC ;
-    Ride rd=new Ride();
+   // Ride rd=new Ride();
+    ArrayList<Integer> Offers = new ArrayList<Integer>();
+
 
     void setPassenger(Passenger passenger){
         this.passenger = passenger;
@@ -15,24 +18,32 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
         return passenger;
     }
 
-    void request(String source,String destnation)
+    void request(Ride r)
    {
-        //rd.source =source;
-        //rd.destnation = destnation;
-
-        for(int i = 0 ; i <= CD.Drivers.size(); i++)
-        {
-
-             DC.Match(source , destnation);
-
-        }
+             r.getdrivcont().Match(r);
     };
 
 
-   Boolean accept()
+   Boolean accept(Ride r)
     {
         Boolean test = false;
+        Scanner input = new Scanner(System.in);
 
+        for (int i = 0; i <Offers.size(); i++){
+            System.out.println("Enter "+(i+1) +" To accept offer  "+Offers.get(i));
+        }
+        for (int i = 0; i < Offers.size(); i++) {
+            System.out.println("Enter Choice");
+
+
+            int choose = input.nextInt();
+
+            r.setPrice(Offers.get(choose-1));
+            r.getdrivcont().getDriver().AllRidesInFavAreas.add(r);
+        }
+
+
+/*
         Scanner sc = new Scanner(System.in);
 
         int i = 0 ;
@@ -52,7 +63,7 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
                     int y = z+1;
                     System.out.println("The passenger selected the offer of the driver : " + CD.Drivers.get(z).getUser_name() );
                      rated(CD.Drivers.get(z));
-                    CD.Drivers.get(z).AllRidesInFavAreas.add(rd.getSource());
+                  //  CD.Drivers.get(z).AllRidesInFavAreas.add(rd.getSource());
                     //System.out.println("Dm"+this.getDriver().getUser_name());
                     test = true;
                 }
@@ -66,7 +77,7 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
 
         //rated(this.getDriver());
 
-       // this.getDriver().AllRidesInFavAreas.add(this.getSource());
+       // this.getDriver().AllRidesInFavAreas.add(this.getSource());*/
         return test;
     }
 
@@ -112,7 +123,7 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
         for(int i = 0 ; i <= CD.Drivers.size(); i++)
         {
 
-            DC.Match(rd.source , rd.destnation);
+            //DC.Match(rd.source , rd.destnation);
 
         }
     }
@@ -161,13 +172,13 @@ public class passengerController implements subject,observer, UserSignUp,UserLog
 
     }
 
-    public Ride getRd() {
+    /*public Ride getRd() {
         return rd;
     }
 
     public void setRd(Ride rd) {
         this.rd = rd;
-    }
+    }*/
 
     public CRUDOperations getCD() {
         return CD;

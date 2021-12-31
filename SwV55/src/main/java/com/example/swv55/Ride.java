@@ -8,23 +8,49 @@ public class Ride {
    // Event event = new Event();
     Date date;
     int numOfPassengers ;
+    int price ;
     passengerController PassengerController = new passengerController();
     driverController DriverController = new driverController();
+//Passenger passenger = new Passenger();
+//Driver driver = new Driver();
+/*
+    public Driver getDriver() {
+        return driver;
+    }
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
 
-
-    public void setPassengerController(passengerController PassengerController) {
-        this.PassengerController = PassengerController;
-    }
-    public passengerController getpassCont(){
-        return PassengerController;
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
     }
 
-    public void setDriverController(driverController DriverController) {
-        this.DriverController = DriverController;
+    public Passenger getPassenger() {
+        return passenger;
     }
-    public driverController getdrivcont(){
-        return DriverController;
+*/
+
+    public void setPrice(int price) {
+        this.price = price;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+                public void setPassengerController(passengerController PassengerController) {
+                    this.PassengerController = PassengerController;
+                }
+                public passengerController getpassCont(){
+                    return PassengerController;
+                }
+
+                public void setDriverController(driverController DriverController) {
+                    this.DriverController = DriverController;
+                }
+                public driverController getdrivcont(){
+                    return DriverController;
+                }
 
     public void setSource(String source) {
         this.source = source;

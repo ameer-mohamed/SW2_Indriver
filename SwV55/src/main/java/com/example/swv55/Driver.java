@@ -14,8 +14,10 @@ public class Driver  {
     private String role;
     private int offerPrice;
     public ArrayList<String>FavouritAreas=new ArrayList<String>();
-    public ArrayList<String>AllRidesInFavAreas=new ArrayList<String>();
+    public ArrayList<Ride>AllRidesInFavAreas=new ArrayList<Ride>();
     private ArrayList<Integer>HisRates=new ArrayList<Integer>();
+     public  ArrayList<Ride> Requestedrides = new ArrayList<Ride>();
+
     private int averageRating;
     private int rate;
     private Date birthDate;
@@ -122,11 +124,11 @@ public class Driver  {
         return FavouritAreas;
     }
 
-    public ArrayList<String> getAllRidesInFavAreas() {
+    public ArrayList<Ride> getAllRidesInFavAreas() {
         return AllRidesInFavAreas;
     }
 
-    public void setAllRidesInFavAreas(ArrayList<String> allRidesInFavAreas) {
+    public void setAllRidesInFavAreas(ArrayList<Ride> allRidesInFavAreas) {
         AllRidesInFavAreas = allRidesInFavAreas;
     }
 
