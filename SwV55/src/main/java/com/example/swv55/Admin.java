@@ -10,6 +10,7 @@ public class Admin   {
     String passaword = "";
     CRUDOperations CD = new CRUDOperations();
     Ride ride =new Ride();
+
   //  Driver driver;
 
   // public static ArrayList<Admin> admins = new ArrayList<Admin>();

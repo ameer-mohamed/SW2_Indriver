@@ -5,16 +5,10 @@ public class Event {
     int Time;
     String CaptinName;
     String passengerName;
-    int price ;
+    //int price ;
 
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
-    public int getPrice() {
-        return price;
-    }
 
     public void setTime(int time) {
         Time = time;

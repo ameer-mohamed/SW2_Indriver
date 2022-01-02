@@ -5,9 +5,10 @@ public class CRUDOperations {
      ArrayList<Driver> SuspendedAccounts_D = new ArrayList<Driver>();
     ArrayList<Passenger> SuspendedAccounts_p = new ArrayList<Passenger>();
     ArrayList<Admin> admins = new ArrayList<Admin>();
+    public static ArrayList<String> discountAreas = new ArrayList<String>();
    static ArrayList<Driver> Drivers = new ArrayList<Driver>();
    static ArrayList<Passenger> Passengers = new ArrayList<Passenger>();
-    ArrayList<Integer>Offers=new ArrayList<Integer>();
+    public static ArrayList<Integer>Offers=new ArrayList<Integer>();
 
     public ArrayList<Driver> getInverifedaccounts() {
         return inverifedaccounts;

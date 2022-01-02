@@ -197,8 +197,9 @@ public class In_driver {
                                                     }
                                                     case 4: {
                                                         System.out.print("Your Rides : ");
+                                                        System.out.println("The size of the array list of the rides equals: "+d1.AllRidesInFavAreas.size());
                                                         for (int y = 0; y < d1.AllRidesInFavAreas.size(); y++) {
-                                                            System.out.println(d1.AllRidesInFavAreas.get(y));
+                                                            System.out.println(DC.getDriver().AllRidesInFavAreas.get(y).toString());
                                                         }
                                                         break;
                                                     }
@@ -224,6 +225,7 @@ public class In_driver {
                                         String pass = input.next();
                                         Boolean z = Pc.Login(username, pass);
 
+
                                         if (z == true) {
                                             exist = -1;
                                             for (int i = 0; i < database.Passengers.size(); i++) {
@@ -235,6 +237,15 @@ public class In_driver {
                                             System.out.println(" ----------------- ");
                                             System.out.println("Hello: " + username);
                                             while (fP) {
+                                                if(!database.Offers.isEmpty())
+                                                {
+                                                    Pc.accept(ride);
+                                                    Pc.rated(d1);
+                                                    //d1.AllRidesInFavAreas.add(ride);
+                                                    database.Offers.clear();
+                                                    DC.getDriver().Requestedrides.clear();
+
+                                                }
                                                 System.out.println("1) Request a trip");
                                                 System.out.println("2) logout");
                                                 int cH = input.nextInt();
@@ -244,25 +255,10 @@ public class In_driver {
                                                         if (database.Drivers.size() == 0) {
                                                             System.out.println("No Trips yet! :(");
                                                         } else {
-                                                            System.out.println("please enter your source");
-                                                            String src = input.next();
-                                                            System.out.println("please enter your Destnation");
-                                                            String dest = input.next();
-                                                            System.out.println("please enter number of passengers");
-                                                            int num = input.nextInt();
 
-                                                            //DC.setPassengerController(Pc);
-                                                           // Pc.setDC(DC);
-                                                            Ride R= new Ride();
-                                                            Pc.setPassenger(p1);
-                                                            DC.setDriver(d1);
-                                                            R.setPassengerController(Pc);
-                                                            R.setSource(src);
-                                                            R.setDestnation(dest);
-                                                            R.setNumOfPassengers(num);
-                                                            Pc.request(R);
+                                                            Pc.request(ride);
 
-                                                            // d1.Match(src);
+                                                            DC.Match(ride);
                                                             // d1.notify(src);
                                                        /*System.out.println("Your offers are : [");
                                                        for (int i = 0; i < d1.notify(src).size(); i++) {
@@ -304,7 +300,8 @@ public class In_driver {
 
                                        System.out.println("1) Verfiy Account");
                                        System.out.println("2) Suspend Account");
-                                       System.out.println("3) logout");
+                                       System.out.println("3) Add area to special area list");
+                                       System.out.println("4) logout");
                                        int function = input.nextInt();
                                        switch(function){
                                            case 1:
@@ -327,6 +324,37 @@ public class In_driver {
 
                                            }
                                            case 3:
+                                           {
+
+                                               Boolean areaChoice = false;
+
+                                               while(areaChoice!= true)
+                                               {
+                                                   Scanner input1 = new Scanner(System.in);
+                                                   System.out.println("Please enter the area you want to add");
+                                                   String area = input1.nextLine();
+                                                   Ac.addSpecialAreas(area);
+                                                   System.out.println("Want to add another area ? ");
+                                                   System.out.println("1) yes ");
+                                                   System.out.println("2) No ");
+                                                   int areaChoiceInteger = input.nextInt();
+                                                   if(areaChoiceInteger == 1)
+                                                   {
+                                                       areaChoice = false;
+                                                   }
+                                                   else if(areaChoiceInteger == 2)
+                                                   {
+                                                       areaChoice = true;
+                                                   }
+                                                   else
+                                                   {
+                                                       System.out.println("Please enter a valid choice ");
+                                                   }
+
+                                               }
+                                               System.out.println("The number of added area to the favorite list: " + database.discountAreas.size());
+                                           }
+                                           case 4:
                                            {
                                                F=false;
                                            }

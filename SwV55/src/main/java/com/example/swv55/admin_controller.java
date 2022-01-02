@@ -1,9 +1,10 @@
 package com.example.swv55;
 
 import java.util.Scanner;
-
+import java .util.ArrayList;
 public class admin_controller implements UserLogin{
     CRUDOperations database=new CRUDOperations();
+    public static ArrayList<Ride> events = new ArrayList<Ride>();
     Admin ad=new Admin();
     void  verfiy(){
         for(int i=0 ; i<database.inverifedaccounts.size() ; i++){
@@ -90,6 +91,12 @@ public class admin_controller implements UserLogin{
 
 
     }
+
+    public void addSpecialAreas(String area)
+    {
+        database.discountAreas.add(area);
+    }
+
     @Override
     public Boolean Login(String Username, String pass) { Boolean loginTest = false;
         for(int i=0;i<database.admins.size();i++){
