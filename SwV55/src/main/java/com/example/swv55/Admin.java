@@ -9,7 +9,9 @@ public class Admin   {
     String user_name = "";
     String passaword = "";
     CRUDOperations CD = new CRUDOperations();
-    Ride ride =new Ride();
+    public static ArrayList<Ride> events = new ArrayList<Ride>();
+
+
   //  Driver driver;
 
   // public static ArrayList<Admin> admins = new ArrayList<Admin>();
@@ -35,13 +37,6 @@ public class Admin   {
 
     public String getPassword() {
         return this.passaword;
-    }
-
-    public void setRide(Ride r){
-        ride = r;
-    }
-    public Ride getRide(){
-        return ride;
     }
 
 

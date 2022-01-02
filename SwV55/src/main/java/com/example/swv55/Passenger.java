@@ -11,8 +11,23 @@ public class Passenger   {
     private int mob_number=0;
     private String Email;
     private  String role;
+    private String birthDate;
+    private Boolean firstRide = true;
+    public String getBirthDate() {
+        return birthDate;
+    }
 
+    public Boolean getFirstRide() {
+        return firstRide;
+    }
 
+    public void setFirstRide(Boolean firstRide) {
+        this.firstRide = firstRide;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
 
     public void setUser_name(String user_name) {
         this.user_name= user_name;

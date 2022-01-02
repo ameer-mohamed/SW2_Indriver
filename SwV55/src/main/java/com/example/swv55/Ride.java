@@ -1,16 +1,28 @@
 package com.example.swv55;
 
 import java.util.Date;
-
+import java.util.ArrayList;
 public class Ride {
     String source ;
     String destnation;
-   // Event event = new Event();
+    // Event event = new Event();
     Date date;
     int numOfPassengers ;
-    int price ;
+    double price ;
+
+    boolean firstRide = true;
+    ArrayList<Event>events = new ArrayList<Event>();
     passengerController PassengerController = new passengerController();
     driverController DriverController = new driverController();
+
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(ArrayList<Event> events) {
+        this.events = events;
+    }
+
 //Passenger passenger = new Passenger();
 //Driver driver = new Driver();
 /*
@@ -30,11 +42,11 @@ public class Ride {
     }
 */
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -91,6 +103,14 @@ public class Ride {
     public Event getEvent() {
         return event;
     }*/
-
+@Override
+public String toString() {
+    return "Ride{" +
+            "source='" + source + '\'' +
+            ", destnation='" + destnation + '\'' +
+            ", date=" + date +
+            ", numOfPassengers=" + numOfPassengers +
+            ", price=" + price +'}';
+}
 
 }

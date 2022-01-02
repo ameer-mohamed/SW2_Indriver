@@ -13,10 +13,10 @@ public class Driver  {
     private  int nationalld;
     private String role;
     private int offerPrice;
-    public ArrayList<String>FavouritAreas=new ArrayList<String>();
-    public ArrayList<Ride>AllRidesInFavAreas=new ArrayList<Ride>();
-    private ArrayList<Integer>HisRates=new ArrayList<Integer>();
-     public  ArrayList<Ride> Requestedrides = new ArrayList<Ride>();
+    public static  ArrayList<String>FavouritAreas=new ArrayList<String>();
+    public static ArrayList<Ride>AllRidesInFavAreas=new ArrayList<Ride>();
+    public static ArrayList<Integer>HisRates=new ArrayList<Integer>();
+    public static  ArrayList<Ride> Requestedrides = new ArrayList<Ride>();
 
     private int averageRating;
     private int rate;
@@ -143,15 +143,10 @@ public class Driver  {
     }
 
 
-
-
-
-   public void setRates(int rates)
-    {
-        this.rate=rates;
-        this.HisRates.add(rates);
-
+    public void setRate(int rate) {
+        this.rate = rate;
     }
+
     public int getRate()
     {
         return this.rate;

@@ -1,10 +1,34 @@
 package com.example.swv55;
 
 import java.util.Scanner;
-
+import java .util.ArrayList;
 public class admin_controller implements UserLogin{
     CRUDOperations database=new CRUDOperations();
+
+
     Admin ad=new Admin();
+
+
+    public void setEvents(){
+        for(int i=0;i<database.Rides.size(); i++){
+            ad.events.add(database.Rides.get(i));
+        }
+    }
+
+    public void showEvents(){
+        setEvents();
+        for(int i=0;i<ad.events.size();i++){
+            System.out.println("Ride From " + ad.events.get(i).getSource() + " To "+ ad.events.get(i).getDestnation());
+            System.out.println("Its Events: ");
+            System.out.println(ad.events.get(i).getEvents().get(i).getEventName() + " " + ad.events.get(i).getEvents().get(i).getTime() + " " +ad.events.get(i).getEvents().get(i).getCaptinName()
+                    + " " );
+        }
+
+    }
+
+
+
+
     void  verfiy(){
         for(int i=0 ; i<database.inverifedaccounts.size() ; i++){
 
@@ -90,6 +114,12 @@ public class admin_controller implements UserLogin{
 
 
     }
+
+    public void addSpecialAreas(String area)
+    {
+        database.discountAreas.add(area);
+    }
+
     @Override
     public Boolean Login(String Username, String pass) { Boolean loginTest = false;
         for(int i=0;i<database.admins.size();i++){

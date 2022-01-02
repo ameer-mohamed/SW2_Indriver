@@ -1,6 +1,7 @@
 package com.example.swv55;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class driverController implements subject,observer,UserLogin,UserSignUp {
@@ -15,6 +16,8 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
         return driver;
     }
     //Ride rd =new Ride();
+
+
 
 
 
@@ -37,21 +40,16 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
     {
         //ArrayList<Integer> OO = new ArrayList<>();
         Boolean test = false;
-
+        System.out.println("CD.Drivers.size() equals "+CD.Drivers.size());
+        System.out.println("CD.Drivers.get(i).getFavouritAreas().size() equals "+CD.Drivers.get(0).FavouritAreas.size());
         for(int i = 0 ; i < CD.Drivers.size(); i++ )
         {
-            for(int j = 0 ; j <CD.Drivers.get(i).getFavouritAreas().size() ; j++)
+            for(int j = 0 ; j <CD.Drivers.get(i).FavouritAreas.size() ; j++)
             {
                 //Driver d= new Driver();
 
-                if(r.getSource().equals(CD.Drivers.get(i).getFavouritAreas().get(j)))
-                {
-
-
-                    System.out.println("We found a passenger");
-
-
-                  //  OO = notify(i);
+                if(r.getSource().equals(CD.Drivers.get(i).FavouritAreas.get(j)))
+                { System.out.println("We found a passenger");//  OO = notify(i);
                     //this.rd.setSource(source);
                     //this.rd.setDestnation(des);
                    // rd.setDriverController(CD.Drivers.get(i));
@@ -66,7 +64,6 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
                     System.out.println(CD.Drivers.get(i).Requestedrides.size());
                     test = true;
                     break;
-
                 }
                 else
                 {
@@ -86,10 +83,22 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
         Scanner input = new Scanner(System.in);
         int offer = input.nextInt();
        // String s =  offer + " From driver " + r.getdrivcont().getDriver().getUser_name();
-        r.getpassCont().Offers.add(offer);
+        System.out.println("Please enter How far are you from it ?");
+        int DT = input.nextInt();
+        CD.TimeDesnation.add(DT);
+        CD.Offers.add(offer);
+        Event e = new Event();
+        Date d= new Date();
+        //e.setPassengerName(r.getpassCont().getPassenger().getUser_name());
+        e.setEventName("Accept the ride and offer price ");
+        e.setCaptinName(r.getdrivcont().getDriver().getUser_name());
+        e.setTime((java.time.LocalTime.now()));
+        e.setPrice(offer);
+        r.events.add(e);
         System.out.println("Thanks :)");
+
        // r.setDriverController();
-        r.getpassCont().accept(r);
+       // r.getpassCont().accept(r);
 
     }
 
@@ -186,19 +195,21 @@ public class driverController implements subject,observer,UserLogin,UserSignUp {
     }
 
     public CRUDOperations getCD() {
+
         return CD;
     }
+
     public  void showRates(){
         for(int i=0 ; i< CD.Drivers.size();i++ ){
-            if(CD.Drivers.get(i).getRate() == 0){
+            if(CD.Drivers.get(i).HisRates.isEmpty()){
                 System.out.println("No Rating here :(");
                 break;
             }
             else{
                 // System.out.println("DU"+this.getDriver().getUser_name());
-                for (int j =0 ; j< CD.Drivers.get(j).getHisRates().size(); j++) {
-                    System.out.println(CD.Drivers.get(j).getHisRates());
-                }
+
+                    System.out.println(CD.Drivers.get(i).HisRates);
+
             }
         }
 }

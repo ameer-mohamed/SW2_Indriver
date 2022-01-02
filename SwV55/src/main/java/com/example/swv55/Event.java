@@ -1,12 +1,13 @@
 package com.example.swv55;
 
+import java.time.LocalTime;
+
 public class Event {
     String eventName ;
-    int Time;
+    LocalTime Time;
     String CaptinName;
     String passengerName;
     int price ;
-
 
     public void setPrice(int price) {
         this.price = price;
@@ -16,11 +17,11 @@ public class Event {
         return price;
     }
 
-    public void setTime(int time) {
+    public void setTime(LocalTime time) {
         Time = time;
     }
 
-    public int getTime() {
+    public LocalTime getTime() {
         return Time;
     }
 
