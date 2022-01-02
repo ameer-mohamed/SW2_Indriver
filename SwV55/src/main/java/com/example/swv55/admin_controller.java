@@ -16,12 +16,15 @@ public class admin_controller implements UserLogin{
     }
 
     public void showEvents(){
-        setEvents();
-        for(int i=0;i<ad.events.size();i++){
-            System.out.println("Ride From " + ad.events.get(i).getSource() + " To "+ ad.events.get(i).getDestnation());
+        //setEvents();
+        for(int i=0;i<database.Rides.size();i++){
+            System.out.println("Ride From " + database.Rides.get(i).getSource() + " To "+ database.Rides.get(i).getDestnation());
             System.out.println("Its Events: ");
-            System.out.println(ad.events.get(i).getEvents().get(i).getEventName() + " " + ad.events.get(i).getEvents().get(i).getTime() + " " +ad.events.get(i).getEvents().get(i).getCaptinName()
-                    + " " );
+            for(int j=0;j<database.Rides.get(i).getEvents().size();j++){
+                System.out.println(database.Rides.get(i).getEvents().get(j).getEventName() + " at " + database.Rides.get(i).getEvents().get(j).getTime() +
+                        " with driver " +database.Rides.get(i).getEvents().get(j).getCaptinName() + " "  +database.Rides.get(i).getEvents().get(j).getPassengerName() );
+            }
+
         }
 
     }
